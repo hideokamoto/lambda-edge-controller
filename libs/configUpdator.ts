@@ -1,12 +1,13 @@
 import { CloudFront } from 'aws-sdk'
+import { EventType } from './models'
 import Types = CloudFront.Types
 
-export class LambdaEdgeController {
+export class ConfigUpdator {
   // Lambda function ARN
   private lambdaArn: string
 
   // Lambda@edge function event type
-  private eventType: Types.EventType
+  private eventType: EventType
 
   private defaultLambdaFunctionAssociations: Types.LambdaFunctionAssociations
 
@@ -16,7 +17,7 @@ export class LambdaEdgeController {
    * @param {string} lambdaArn - Lambda arn
    * @param {string} [stage='development'] - stage
    **/
-  constructor (lambdaArn: string, eventType: Types.EventType = 'viewer-request', defaultLambdaFunctionAssociations: Types.LambdaFunctionAssociations = {
+  constructor (lambdaArn: string, eventType: EventType = 'viewer-request', defaultLambdaFunctionAssociations: Types.LambdaFunctionAssociations = {
     Quantity: 0,
     Items: []
   }) {
@@ -36,18 +37,18 @@ export class LambdaEdgeController {
 
   /**
    * Update Lambda@edge function event type
-   * @param {CloudFront.Types.EventType} type
+   * @param {CloudFront.EventType} type
    */
-  public updateEventType (type: Types.EventType): this {
+  public updateEventType (type: EventType): this {
     this.eventType = type
     return this
   }
 
   /**
    * Get target event type
-   * @return {CloudFront.Types.EventType}
+   * @return {CloudFront.EventType}
    */
-  public getTargetEventType (): Types.EventType {
+  public getTargetEventType (): EventType {
     return this.eventType
   }
 
@@ -150,4 +151,4 @@ export class LambdaEdgeController {
   }
 }
 
-export default LambdaEdgeController
+export default ConfigUpdator

@@ -1,6 +1,6 @@
-import Controller from '../libs/index'
+import Controller from '../libs/controller'
 
-describe('libs/index.ts', () => {
+describe('libs/contorller.ts', () => {
   describe('constructor', () => {
     it('should not be throw error', () => {
       expect(() => {
