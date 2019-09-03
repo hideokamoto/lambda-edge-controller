@@ -17,7 +17,7 @@
     "postversion": "npm run push:tag && npm run create:release && npm run create:changelog",
     "push:tag": "git push origin $(git describe --abbrev=0 --tags)",
     "create:release": "conventional-github-releaser -p angular",
-    "create:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md && git commit -m 'update changelog'"
+    "create:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md && git commit -m 'docs: update changelog'"
   },
   "keywords": [],
   "bugs": {
