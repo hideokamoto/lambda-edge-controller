@@ -39,8 +39,8 @@ $ git commit -m "<type>[optional scope]: <description>
 
 ```bash
 // clone
-$ git clone git@github.com:hideokamoto/MY_REPO_NAME.git
-$ cd MY_REPO_NAME
+$ git clone git@github.com:hideokamoto/lambda-edge-controller.git
+$ cd lambda-edge-controller
 
 // setup
 $ yarn
