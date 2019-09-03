@@ -1,3 +1,13 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/hideokamoto/lambda-edge-controller/compare/v1.0.1...v1.1.0) (2019-09-03)
+
+
+### Features
+
+* set evet type difinition ([7ab7922](https://github.com/hideokamoto/lambda-edge-controller/commit/7ab7922))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/hideokamoto/lambda-edge-controller/compare/v1.0.0...v1.0.1) (2019-09-03)
 
