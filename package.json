@@ -1,7 +1,7 @@
 {
   "name": "lambda-edge-controller",
   "version": "0.0.0",
-  "description": "",
+  "description": "Simple Lambda@edge function controller",
   "main": "dist/index.js",
   "engines": {
     "node": "^10.13.0 || >=11.10.1"
