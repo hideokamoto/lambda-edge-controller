@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_index_.html">&quot;index&quot;</a>
+					<a href="../modules/_controller_.html">&quot;controller&quot;</a>
 				</li>
 				<li>
-					<a href="_index_.lambdaedgecontroller.html">LambdaEdgeController</a>
+					<a href="_controller_.lambdaedgecontroller.html">LambdaEdgeController</a>
 				</li>
 			</ul>
 			<h1>Class LambdaEdgeController</h1>
@@ -84,21 +84,21 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_index_.lambdaedgecontroller.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_controller_.lambdaedgecontroller.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_index_.lambdaedgecontroller.html#cloudfront" class="tsd-kind-icon">cloudfront</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_index_.lambdaedgecontroller.html#updator" class="tsd-kind-icon">updator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_controller_.lambdaedgecontroller.html#cloudfront" class="tsd-kind-icon">cloudfront</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_controller_.lambdaedgecontroller.html#updator" class="tsd-kind-icon">updator</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_index_.lambdaedgecontroller.html#attachedgefunction" class="tsd-kind-icon">attach<wbr>Edge<wbr>Function</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_index_.lambdaedgecontroller.html#detachedgefunction" class="tsd-kind-icon">detach<wbr>Edge<wbr>Function</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_controller_.lambdaedgecontroller.html#attachedgefunction" class="tsd-kind-icon">attach<wbr>Edge<wbr>Function</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_controller_.lambdaedgecontroller.html#detachedgefunction" class="tsd-kind-icon">detach<wbr>Edge<wbr>Function</a></li>
 							</ul>
 						</section>
 					</div>
@@ -110,13 +110,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Lambda<wbr>Edge<wbr>Controller<span class="tsd-signature-symbol">(</span>lambdaArn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, eventType<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CloudFront.Types.EventType</span>, client<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_index_.controllerclient.html" class="tsd-signature-type">ControllerClient</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_index_.lambdaedgecontroller.html" class="tsd-signature-type">LambdaEdgeController</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Lambda<wbr>Edge<wbr>Controller<span class="tsd-signature-symbol">(</span>lambdaArn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, eventType<span class="tsd-signature-symbol">?: </span><a href="../modules/_models_.html#eventtype" class="tsd-signature-type">EventType</a>, client<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_models_.controllerclient.html" class="tsd-signature-type">ControllerClient</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_controller_.lambdaedgecontroller.html" class="tsd-signature-type">LambdaEdgeController</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/04732a2/libs/index.ts#L15">index.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L11">controller.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -135,13 +135,13 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> eventType: <span class="tsd-signature-type">CloudFront.Types.EventType</span><span class="tsd-signature-symbol"> =&nbsp;&quot;viewer-request&quot;</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> eventType: <a href="../modules/_models_.html#eventtype" class="tsd-signature-type">EventType</a><span class="tsd-signature-symbol"> =&nbsp;&quot;viewer-request&quot;</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> client: <a href="../interfaces/_index_.controllerclient.html" class="tsd-signature-type">ControllerClient</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> client: <a href="../interfaces/_models_.controllerclient.html" class="tsd-signature-type">ControllerClient</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_index_.lambdaedgecontroller.html" class="tsd-signature-type">LambdaEdgeController</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_controller_.lambdaedgecontroller.html" class="tsd-signature-type">LambdaEdgeController</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -154,17 +154,17 @@
 					<div class="tsd-signature tsd-kind-icon">cloudfront<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CloudFront</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/04732a2/libs/index.ts#L12">index.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L8">controller.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="updator" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> updator</h3>
-					<div class="tsd-signature tsd-kind-icon">updator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConfigUpdator</span></div>
+					<div class="tsd-signature tsd-kind-icon">updator<span class="tsd-signature-symbol">:</span> <a href="_configupdator_.configupdator.html" class="tsd-signature-type">ConfigUpdator</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/04732a2/libs/index.ts#L15">index.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L11">controller.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -181,7 +181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/04732a2/libs/index.ts#L51">index.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L47">controller.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -213,7 +213,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/04732a2/libs/index.ts#L34">index.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L30">controller.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -247,7 +247,13 @@
 						<a href="../modules/_configupdator_.html">"config<wbr>Updator"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
+						<a href="../modules/_controller_.html">"controller"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_models_.html">"models"</a>
 					</li>
 				</ul>
 			</nav>
@@ -256,30 +262,27 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_index_.lambdaedgecontroller.html" class="tsd-kind-icon">Lambda<wbr>Edge<wbr>Controller</a>
+						<a href="_controller_.lambdaedgecontroller.html" class="tsd-kind-icon">Lambda<wbr>Edge<wbr>Controller</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_index_.lambdaedgecontroller.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_controller_.lambdaedgecontroller.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_index_.lambdaedgecontroller.html#cloudfront" class="tsd-kind-icon">cloudfront</a>
+								<a href="_controller_.lambdaedgecontroller.html#cloudfront" class="tsd-kind-icon">cloudfront</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_index_.lambdaedgecontroller.html#updator" class="tsd-kind-icon">updator</a>
+								<a href="_controller_.lambdaedgecontroller.html#updator" class="tsd-kind-icon">updator</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_index_.lambdaedgecontroller.html#attachedgefunction" class="tsd-kind-icon">attach<wbr>Edge<wbr>Function</a>
+								<a href="_controller_.lambdaedgecontroller.html#attachedgefunction" class="tsd-kind-icon">attach<wbr>Edge<wbr>Function</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_index_.lambdaedgecontroller.html#detachedgefunction" class="tsd-kind-icon">detach<wbr>Edge<wbr>Function</a>
+								<a href="_controller_.lambdaedgecontroller.html#detachedgefunction" class="tsd-kind-icon">detach<wbr>Edge<wbr>Function</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../interfaces/_index_.controllerclient.html" class="tsd-kind-icon">Controller<wbr>Client</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
