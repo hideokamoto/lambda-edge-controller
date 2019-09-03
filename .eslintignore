@@ -1,2 +1,6 @@
 docs/
 examples/
+dist/
+node_modules/
+.huskyrc.js
+rollup.config.jscommitlint.config.js
