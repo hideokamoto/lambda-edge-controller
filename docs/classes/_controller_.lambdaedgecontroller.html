@@ -91,6 +91,8 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_controller_.lambdaedgecontroller.html#cloudfront" class="tsd-kind-icon">cloudfront</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_controller_.lambdaedgecontroller.html#isdebug" class="tsd-kind-icon">is<wbr>Debug</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_controller_.lambdaedgecontroller.html#logger" class="tsd-kind-icon">logger</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_controller_.lambdaedgecontroller.html#updator" class="tsd-kind-icon">updator</a></li>
 							</ul>
 						</section>
@@ -99,6 +101,8 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_controller_.lambdaedgecontroller.html#attachedgefunction" class="tsd-kind-icon">attach<wbr>Edge<wbr>Function</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_controller_.lambdaedgecontroller.html#detachedgefunction" class="tsd-kind-icon">detach<wbr>Edge<wbr>Function</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_controller_.lambdaedgecontroller.html#disabledebugger" class="tsd-kind-icon">disable<wbr>Debugger</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_controller_.lambdaedgecontroller.html#enabledebugger" class="tsd-kind-icon">enable<wbr>Debugger</a></li>
 							</ul>
 						</section>
 					</div>
@@ -116,7 +120,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L11">controller.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L19">controller.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -154,7 +158,27 @@
 					<div class="tsd-signature tsd-kind-icon">cloudfront<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CloudFront</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L8">controller.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L10">controller.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="isdebug" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> is<wbr>Debug</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L16">controller.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="logger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> logger</h3>
+					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">bunyan</span><span class="tsd-signature-symbol"> =&nbsp;getLogger(&#x27;LambdaEdgeController&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L19">controller.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,7 +188,7 @@
 					<div class="tsd-signature tsd-kind-icon">updator<span class="tsd-signature-symbol">:</span> <a href="_configupdator_.configupdator.html" class="tsd-signature-type">ConfigUpdator</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L11">controller.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L13">controller.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -181,7 +205,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L47">controller.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L77">controller.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -213,7 +237,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/91ce308/libs/controller.ts#L30">controller.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L54">controller.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -235,6 +259,50 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="disabledebugger" class="tsd-anchor"></a>
+					<h3>disable<wbr>Debugger</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">disable<wbr>Debugger<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L35">controller.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Disable logger</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="enabledebugger" class="tsd-anchor"></a>
+					<h3>enable<wbr>Debugger</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">enable<wbr>Debugger<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/hideokamoto/lambda-edge-controller/blob/4400825/libs/controller.ts#L43">controller.ts:43</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Enable logger</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -251,6 +319,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_logger_.html">"logger"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_models_.html">"models"</a>
@@ -271,6 +342,12 @@
 								<a href="_controller_.lambdaedgecontroller.html#cloudfront" class="tsd-kind-icon">cloudfront</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_controller_.lambdaedgecontroller.html#isdebug" class="tsd-kind-icon">is<wbr>Debug</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_controller_.lambdaedgecontroller.html#logger" class="tsd-kind-icon">logger</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_controller_.lambdaedgecontroller.html#updator" class="tsd-kind-icon">updator</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -278,6 +355,12 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_controller_.lambdaedgecontroller.html#detachedgefunction" class="tsd-kind-icon">detach<wbr>Edge<wbr>Function</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_controller_.lambdaedgecontroller.html#disabledebugger" class="tsd-kind-icon">disable<wbr>Debugger</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_controller_.lambdaedgecontroller.html#enabledebugger" class="tsd-kind-icon">enable<wbr>Debugger</a>
 							</li>
 						</ul>
 					</li>
