@@ -1,7 +1,9 @@
 import 'tslib'
+import bunyan from 'bunyan'
 import { CloudFront } from 'aws-sdk'
 import ConfigUpdator from './configUpdator'
 import { ControllerClient, EventType } from './models'
+import { getLogger } from './logger'
 
 export class LambdaEdgeController {
   // CloudFront client from AWS SDK
@@ -9,6 +11,12 @@ export class LambdaEdgeController {
 
   // CloudFront config updator
   private updator: ConfigUpdator
+
+  // Log request / response
+  private isDebug = false
+
+  // Logger
+  private logger: bunyan = getLogger('LambdaEdgeController')
 
   /**
    * constructor
@@ -22,20 +30,42 @@ export class LambdaEdgeController {
   }
 
   /**
+   * Disable logger
+   */
+  public disableDebugger (): this {
+    this.isDebug = false
+    return this
+  }
+
+  /**
+   * Enable logger
+   */
+  public enableDebugger (): this {
+    this.isDebug = true
+    return this
+  }
+
+  /**
    * Reove lambda edge function from specific CloudFront Distribution
    *
    * @param {string} distributionId - CloudFront Distribution ID
    * @return {Promise} results of the workflow
    **/
   public async detachEdgeFunction (distributionId: string): Promise<CloudFront.UpdateDistributionResult> {
-    const data = await this.cloudfront.getDistribution({ Id: distributionId }).promise()
+    const req = { Id: distributionId }
+    if (this.isDebug) this.logger.info({ data: req, action: 'getDistribution' })
+    const data = await this.cloudfront.getDistribution(req).promise()
+    if (this.isDebug) this.logger.info({ data, action: 'getDistribution' })
     if (!data.Distribution) throw new Error('No such distribution')
     const config = await this.updator.createUpdateDistributionConfig(
       data.Distribution.DistributionConfig,
       'detachEdge'
     )
     const params = this.updator.createUpdateDistributionParam(data, config)
-    return this.cloudfront.updateDistribution(params).promise()
+    if (this.isDebug) this.logger.info({ data: params, action: 'updateDistribution' })
+    const result = await this.cloudfront.updateDistribution(params).promise()
+    if (this.isDebug) this.logger.info({ data: result, action: 'updateDistribution' })
+    return result
   }
 
   /**
@@ -45,14 +75,20 @@ export class LambdaEdgeController {
    * @return {Promise} results of the workflow
    **/
   public async attachEdgeFunction (distributionId: string): Promise<CloudFront.UpdateDistributionResult> {
-    const data = await this.cloudfront.getDistribution({ Id: distributionId }).promise()
+    const req = { Id: distributionId }
+    if (this.isDebug) this.logger.info({ data: req, action: 'getDistribution' })
+    const data = await this.cloudfront.getDistribution(req).promise()
+    if (this.isDebug) this.logger.info({ data, action: 'getDistribution' })
     if (!data || !data.Distribution) throw new Error('No such distribution')
     const config = await this.updator.createUpdateDistributionConfig(
       data.Distribution.DistributionConfig,
       'attachEdge'
     )
     const params = this.updator.createUpdateDistributionParam(data, config)
-    return this.cloudfront.updateDistribution(params).promise()
+    if (this.isDebug) this.logger.info({ data: params, action: 'udateDistribution' })
+    const result = await this.cloudfront.updateDistribution(params).promise()
+    if (this.isDebug) this.logger.info({ data: result, action: 'updateDistribution' })
+    return result
   }
 }
 
