@@ -1,3 +1,13 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/hideokamoto/lambda-edge-controller/compare/v1.1.0...v1.2.0) (2019-09-06)
+
+
+### Features
+
+* set logger ([4400825](https://github.com/hideokamoto/lambda-edge-controller/commit/4400825))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/hideokamoto/lambda-edge-controller/compare/v1.0.1...v1.1.0) (2019-09-03)
 
