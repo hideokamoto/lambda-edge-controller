@@ -590,10 +590,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/bunyan-format@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@types/bunyan-format/-/bunyan-format-0.2.0.tgz#de79bf9fe67ea0dcf5416c5f1acc46abb0bb68d8"
-  integrity sha512-e87MeYM9rZUaQ7UgNU5webttfTlJWhc8oFU/hQBe/GGcf3bspY4ajVHqF1YgbysXnCwZDZgAq1FEe8ufFZZsLw==
+"@types/bunyan-format@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@types/bunyan-format/-/bunyan-format-0.2.3.tgz#b481411b41f7c620fdeb718f688be82783d4b4ce"
+  integrity sha512-3hQjdA0bowlNRBPgRPD7QSClJM1lcTsdjt36MrjoIwM25X6LKv6BuBA5l2Y0si1AB4gdUTZ9wq0vN17YzkrsaA==
   dependencies:
     "@types/node" "*"
 
