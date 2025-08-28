@@ -1,5 +1,5 @@
 import 'tslib'
-import { CloudFront } from 'aws-sdk'
+import { CloudFront } from '@aws-sdk/client-cloudfront'
 import ConfigUpdator from './configUpdator'
 
 // Service Client configs
