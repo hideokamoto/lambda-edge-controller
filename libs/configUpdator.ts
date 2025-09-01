@@ -106,13 +106,7 @@ export class ConfigUpdator {
    * @return {CloudFront.Types.DistributionConfig} updated distribution config
    **/
   public detatchEdgeFunction (config: DistributionConfig): DistributionConfig {
-    const defaultCacheBehavior = config.DefaultCacheBehavior
-    let lambdas: LambdaFunctionAssociations
-    if (defaultCacheBehavior) {
-      lambdas = defaultCacheBehavior.LambdaFunctionAssociations || this.defaultLambdaFunctionAssociations
-    } else {
-      lambdas = this.defaultLambdaFunctionAssociations
-    }
+    const lambdas: LambdaFunctionAssociations = this.getLambdaAssociations(config)
 
     if ((lambdas.Quantity || 0) < 1 || !lambdas.Items) return config
     const newLambdaItems: LambdaFunctionAssociation[] = []
@@ -141,13 +135,7 @@ export class ConfigUpdator {
    **/
   public attatchEdgeFunction (config: DistributionConfig): DistributionConfig {
     const param = this.detatchEdgeFunction(config)
-    const defaultCacheBehavior = param.DefaultCacheBehavior
-    let lambdas: LambdaFunctionAssociations
-    if (defaultCacheBehavior) {
-      lambdas = defaultCacheBehavior.LambdaFunctionAssociations || this.defaultLambdaFunctionAssociations
-    } else {
-      lambdas = this.defaultLambdaFunctionAssociations
-    }
+    const lambdas: LambdaFunctionAssociations = this.getLambdaAssociations(param)
     const newItem = {
       LambdaFunctionARN: this.getLambdaArn(),
       EventType: this.eventType
@@ -162,6 +150,14 @@ export class ConfigUpdator {
       param.DefaultCacheBehavior.LambdaFunctionAssociations = lambdas
     }
     return param
+  }
+
+  private getLambdaAssociations (config: DistributionConfig): LambdaFunctionAssociations {
+    const defaultCacheBehavior = config.DefaultCacheBehavior
+    if (defaultCacheBehavior) {
+      return defaultCacheBehavior.LambdaFunctionAssociations || this.defaultLambdaFunctionAssociations
+    }
+    return this.defaultLambdaFunctionAssociations
   }
 }
 
