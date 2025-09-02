@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "esnext",
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "declaration": true,
     "outDir": "./dist/",
     "rootDir": "./libs/",
-    "lib": [ "esnext"],
+    "lib": ["ES2022"],
     "strict": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -20,8 +21,10 @@
     "noFallthroughCasesInSwitch": true,
     "noEmitHelpers": true,
     "importHelpers": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "libs/"
