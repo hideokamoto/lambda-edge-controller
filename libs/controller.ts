@@ -1,6 +1,6 @@
 import 'tslib'
 import bunyan from 'bunyan'
-import { CloudFrontClient, GetDistributionCommand, UpdateDistributionCommand } from '@aws-sdk/client-cloudfront'
+import { CloudFrontClient, GetDistributionCommand, UpdateDistributionCommand, UpdateDistributionCommandOutput } from '@aws-sdk/client-cloudfront'
 import ConfigUpdator from './configUpdator'
 import { ControllerClient, EventType } from './models'
 import { getLogger } from './logger'
@@ -51,7 +51,7 @@ export class LambdaEdgeController {
    * @param {string} distributionId - CloudFront Distribution ID
    * @return {Promise} results of the workflow
    **/
-  public async detachEdgeFunction (distributionId: string): Promise<any> {
+  public async detachEdgeFunction (distributionId: string): Promise<UpdateDistributionCommandOutput> {
     const req = { Id: distributionId }
     if (this.isDebug) this.logger.info({ data: req, action: 'getDistribution' })
     const data = await this.cloudfront.send(new GetDistributionCommand(req))
@@ -74,7 +74,7 @@ export class LambdaEdgeController {
    * @param {string} distributionId - CloudFront Distribution ID
    * @return {Promise} results of the workflow
    **/
-  public async attachEdgeFunction (distributionId: string): Promise<any> {
+  public async attachEdgeFunction (distributionId: string): Promise<UpdateDistributionCommandOutput> {
     const req = { Id: distributionId }
     if (this.isDebug) this.logger.info({ data: req, action: 'getDistribution' })
     const data = await this.cloudfront.send(new GetDistributionCommand(req))

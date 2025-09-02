@@ -44,7 +44,7 @@ async function runAllTests() {
       controllers[eventType] = controller;
       console.log(`      ✅ コントローラーが作成されました`);
       console.log(`         Lambda ARN: ${lambdaArn}`);
-      console.log(`         イベントタイプ: ${controller.getTargetEventType()}`);
+      console.log(`         イベントタイプ: ${eventType}`);
     }
 
     // ===== 2. 高度なテスト =====
