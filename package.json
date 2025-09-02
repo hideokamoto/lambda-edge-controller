@@ -4,7 +4,7 @@
   "description": "Simple Lambda@edge function controller",
   "main": "dist/index.js",
   "engines": {
-    "node": "^10.13.0 || >=11.10.1"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "build": "rollup -c",
@@ -44,6 +44,9 @@
     },
     "testMatch": [
       "**/__tests__/*.+(ts|js)"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@aws-sdk|@smithy)/)"
     ]
   },
   "lint-staged": {
@@ -84,7 +87,7 @@
     "typescript": "3.6.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.1003.0",
+    "@aws-sdk/client-cloudfront": "^3.0.0",
     "bunyan": "^1.8.12",
     "bunyan-format": "^0.2.1"
   }

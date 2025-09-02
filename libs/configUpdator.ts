@@ -1,6 +1,5 @@
-import { CloudFront } from 'aws-sdk'
+import { GetDistributionResult, UpdateDistributionRequest, DistributionConfig, LambdaFunctionAssociations, LambdaFunctionAssociation } from '@aws-sdk/client-cloudfront'
 import { EventType } from './models'
-import Types = CloudFront.Types
 
 export class ConfigUpdator {
   // Lambda function ARN
@@ -9,7 +8,7 @@ export class ConfigUpdator {
   // Lambda@edge function event type
   private eventType: EventType
 
-  private defaultLambdaFunctionAssociations: Types.LambdaFunctionAssociations
+  private defaultLambdaFunctionAssociations: LambdaFunctionAssociations
 
   /**
    * constructor
@@ -17,7 +16,7 @@ export class ConfigUpdator {
    * @param {string} lambdaArn - Lambda arn
    * @param {string} [stage='development'] - stage
    **/
-  constructor (lambdaArn: string, eventType: EventType = 'viewer-request', defaultLambdaFunctionAssociations: Types.LambdaFunctionAssociations = {
+  constructor (lambdaArn: string, eventType: EventType = 'viewer-request', defaultLambdaFunctionAssociations: LambdaFunctionAssociations = {
     Quantity: 0,
     Items: []
   }) {
@@ -59,7 +58,7 @@ export class ConfigUpdator {
    * @param {CloudFront.Types.DistributionConfig} config - updated distribution config
    * @return {CloudFront.UpdateDistributionRequest} update distribution param
    **/
-  public createUpdateDistributionParam (data: CloudFront.GetDistributionResult, config: Types.DistributionConfig): CloudFront.UpdateDistributionRequest {
+  public createUpdateDistributionParam (data: GetDistributionResult, config: DistributionConfig): UpdateDistributionRequest {
     if (!data || !data.Distribution) throw new Error('No such distribution')
     const distribution = data.Distribution
     const params = {
@@ -77,7 +76,7 @@ export class ConfigUpdator {
    * @param {'detachEdge' | 'attachEdge'} action - update action type
    * @return {CloudFront.Types.DistributionConfig} config
    **/
-  public createUpdateDistributionConfig (config: Types.DistributionConfig, action: string): Types.DistributionConfig {
+  public createUpdateDistributionConfig (config: DistributionConfig, action: string): DistributionConfig {
     switch (action) {
       case 'detachEdge':
         return this.detatchEdgeFunction(config)
@@ -105,15 +104,17 @@ export class ConfigUpdator {
    * @param {CloudFront.Types.DistributionConfig} config - CloudFront distribution config
    * @return {CloudFront.Types.DistributionConfig} updated distribution config
    **/
-  public detatchEdgeFunction (config: Types.DistributionConfig): Types.DistributionConfig {
+  public detatchEdgeFunction (config: DistributionConfig): DistributionConfig {
     const defaultCacheBehavior = config.DefaultCacheBehavior
-    const lambdas: Types.LambdaFunctionAssociations = defaultCacheBehavior.LambdaFunctionAssociations || this.defaultLambdaFunctionAssociations
-    if (lambdas.Quantity < 1 || !lambdas.Items) return config
-    const newLambdaItems: Types.LambdaFunctionAssociationList = []
-    lambdas.Items.forEach(item => {
+    if (!defaultCacheBehavior) return config
+    const lambdas: LambdaFunctionAssociations = defaultCacheBehavior.LambdaFunctionAssociations || this.defaultLambdaFunctionAssociations
+    if (!lambdas.Quantity || lambdas.Quantity < 1 || !lambdas.Items) return config
+    const newLambdaItems: LambdaFunctionAssociation[] = []
+    lambdas.Items.forEach((item: LambdaFunctionAssociation) => {
       if (!item.EventType) return
       if (
         item.EventType === this.eventType &&
+        item.LambdaFunctionARN &&
         this.isTargetLambdaArn(item.LambdaFunctionARN)
       ) {
         return
@@ -122,7 +123,7 @@ export class ConfigUpdator {
     })
     lambdas.Quantity = newLambdaItems.length
     lambdas.Items = newLambdaItems
-    config.DefaultCacheBehavior.LambdaFunctionAssociations = lambdas
+    defaultCacheBehavior.LambdaFunctionAssociations = lambdas
     return config
   }
 
@@ -132,11 +133,12 @@ export class ConfigUpdator {
    * @param {CloudFront.Types.DistributionConfig} config - CloudFront distribution config
    * @return {CloudFront.Types.DistributionConfig} updated distribution config
    **/
-  public attatchEdgeFunction (config: Types.DistributionConfig): Types.DistributionConfig {
+  public attatchEdgeFunction (config: DistributionConfig): DistributionConfig {
     const param = this.detatchEdgeFunction(config)
     const defaultCacheBehavior = param.DefaultCacheBehavior
-    const lambdas: Types.LambdaFunctionAssociations = defaultCacheBehavior.LambdaFunctionAssociations || this.defaultLambdaFunctionAssociations
-    const newItem = {
+    if (!defaultCacheBehavior) return param
+    const lambdas: LambdaFunctionAssociations = defaultCacheBehavior.LambdaFunctionAssociations || this.defaultLambdaFunctionAssociations
+    const newItem: LambdaFunctionAssociation = {
       LambdaFunctionARN: this.getLambdaArn(),
       EventType: this.eventType
     }
@@ -146,7 +148,7 @@ export class ConfigUpdator {
       lambdas.Items.push(newItem)
     }
     lambdas.Quantity = lambdas.Items.length
-    param.DefaultCacheBehavior.LambdaFunctionAssociations = lambdas
+    defaultCacheBehavior.LambdaFunctionAssociations = lambdas
     return param
   }
 }
