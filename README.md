@@ -252,6 +252,81 @@ npm run doc
 }
 ```
 
+## Release Process
+
+### Prerequisites
+
+- All changes committed and pushed to remote repository
+- GitHub access token configured for `conventional-github-releaser`
+- npm account access for publishing
+
+### Release Steps
+
+1. **Commit and push changes:**
+```bash
+git add .
+git commit -m "feat: add new feature"  # Use conventional commit format
+git push origin main
+```
+
+2. **Build the library:**
+```bash
+npm run build
+```
+
+3. **Update version and create release:**
+```bash
+npm version patch  # or minor, major
+```
+This command automatically:
+- Updates version in `package.json`
+- Creates Git tag
+- Pushes tag to remote repository
+- Creates GitHub release
+- Updates `CHANGELOG.md`
+
+4. **Verify release artifacts:**
+```bash
+# Check if tag was created
+git tag -l | tail -3
+
+# Check if CHANGELOG was updated
+git log --oneline -2
+```
+
+5. **Publish to npm:**
+```bash
+npm publish
+```
+
+### Version Management
+
+- **patch**: Bug fixes and minor updates (1.2.1 → 1.2.2)
+- **minor**: New features (1.2.1 → 1.3.0)
+- **major**: Breaking changes (1.2.1 → 2.0.0)
+
+### Automated Processes
+
+The release process uses several npm scripts that run automatically:
+
+- **`postversion`**: Automatically executes after `npm version`
+- **`push:tag`**: Pushes Git tag to remote repository
+- **`create:release`**: Creates GitHub release with conventional changelog
+- **`create:changelog`**: Updates local `CHANGELOG.md` file
+
+### Troubleshooting
+
+If the automated release process fails:
+
+```bash
+# Manually execute release scripts
+npm run push:tag
+npm run create:release
+npm run create:changelog
+```
+
+Check GitHub repository settings and ensure proper authentication tokens are configured.
+
 ## Architecture
 
 The library consists of three main components:
