@@ -1,4 +1,3 @@
-
 import bunyan from 'bunyan'
 import BunyanFormat from 'bunyan-format'
 export type LogLevel = 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'fatal';

@@ -3,15 +3,16 @@ extends:
   - plugin:@typescript-eslint/recommended
 plugins:
   - "@typescript-eslint"
+  - n
 
 parser: "@typescript-eslint/parser"
 env:
-  es6: true
+  es2022: true
   node: true
 parserOptions:
   sourceType: 'module'
-  ecmaFeatures:
-    ts: true
+  ecmaVersion: 2022
+  project: './tsconfig.json'
 globals:
   describe: false
   it: false
@@ -22,4 +23,6 @@ globals:
   jasmine: false
   expect: false
 rules:
-  "@typescript-eslint/explicit-function-return-type": off
+  "@typescript-eslint/explicit-function-return-type": "off"
+  "@typescript-eslint/no-unused-vars": "error"
+  "@typescript-eslint/no-explicit-any": "warn"
