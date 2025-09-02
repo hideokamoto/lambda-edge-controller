@@ -1,0 +1,22 @@
+{
+  "name": "lambda-edge-controller-examples",
+  "version": "1.0.0",
+  "description": "Lambda@Edge Controller の使用例とテストスクリプト",
+  "main": "aws-test.js",
+  "scripts": {
+    "test": "node aws-test.js",
+    "setup": "cp env.example .env && echo '✅ .envファイルが作成されました。実際の値を設定してください。'"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "lambda-edge",
+    "cloudfront",
+    "aws",
+    "examples"
+  ],
+  "author": "Hidetaka Okamoto",
+  "license": "MIT"
+}
