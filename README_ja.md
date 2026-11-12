@@ -108,10 +108,12 @@ new LambdaEdgeController(
 ### メソッド
 
 #### `attachEdgeFunction(distributionId: string): Promise<any>`
-指定されたCloudFrontディストリビューションにLambda@Edge関数をアタッチします。
+指定されたCloudFrontディストリビューションのデフォルトキャッシュ動作にLambda@Edge関数をアタッチします。
+
+CloudFrontでは、1つのキャッシュ動作につき、1つのイベントタイプに関連付けられる関数は1つだけです。同じイベントタイプに関数（同じ関数の別バージョン、または別の関数）がすでに関連付けられている場合は、コンストラクタに渡した関数に置き換えます。ほかのイベントタイプの関連付けと、ほかのキャッシュ動作は変更しません。
 
 #### `detachEdgeFunction(distributionId: string): Promise<any>`
-指定されたCloudFrontディストリビューションからLambda@Edge関数を削除します。
+指定されたCloudFrontディストリビューションのデフォルトキャッシュ動作からLambda@Edge関数を削除します。削除するのは、コンストラクタに渡したイベントタイプの関連付けのうち、ARN（バージョンを含む）がコンストラクタに渡したARNと完全に一致するものだけです。
 
 #### `enableDebugger(): this`
 デバッグ目的で詳細なログを有効化します。
