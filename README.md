@@ -128,7 +128,7 @@ The project includes comprehensive examples and testing utilities in the `exampl
 1. **Install dependencies:**
 ```bash
 # Install project dependencies
-npm install
+pnpm install
 
 # Install examples dependencies
 cd examples
@@ -138,7 +138,7 @@ npm install
 2. **Build the library:**
 ```bash
 # From project root
-npm run build
+pnpm run build
 ```
 
 3. **Configure environment:**
@@ -166,13 +166,13 @@ DEBUG=true
 #### Unit Tests
 ```bash
 # Run all unit tests
-npm test
+pnpm test
 
 # Run tests in watch mode
-npm run test:watch
+pnpm run test:watch
 
 # Run tests with coverage
-npm run test:dev
+pnpm run test:dev
 ```
 
 #### Integration Tests
@@ -209,7 +209,8 @@ The examples directory provides:
 
 ### Prerequisites
 
-- Node.js >= 14.0.0
+- Node.js >= 18.18.0 (pnpm 10 needs 18.12+, and the pinned `@typescript-eslint/parser` 7.x needs `^18.18.0 || >=20`)
+- [pnpm](https://pnpm.io/) (the version is pinned by `packageManager` in `package.json`; `corepack enable` picks it up)
 - AWS credentials with CloudFront permissions
 - TypeScript knowledge
 
@@ -217,21 +218,24 @@ The examples directory provides:
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Run linter
-npm run lint
-npm run lint --fix
+pnpm run lint
+pnpm run lint --fix
+
+# Type check
+pnpm run typecheck
 
 # Run tests
-npm test
-npm run test:watch
+pnpm test
+pnpm run test:watch
 
 # Build
-npm run build
+pnpm run build
 
 # Generate documentation
-npm run doc
+pnpm run doc
 ```
 
 ### Required IAM Permissions
@@ -254,78 +258,15 @@ npm run doc
 
 ## Release Process
 
-### Prerequisites
+Releases are automated. Merging to `main` runs [semantic-release](https://github.com/semantic-release/semantic-release) on CircleCI
+(config: `workflows/publish/npm-polyrepo-semantic-release.yaml` in `hideokamoto/circleci-configurations`, settings: `.releaserc.json`).
 
-- All changes committed and pushed to remote repository
-- GitHub access token configured for `conventional-github-releaser`
-- npm account access for publishing
+1. Merge a pull request whose commits follow [Conventional Commits](https://www.conventionalcommits.org/).
+2. CircleCI runs lint / typecheck / build / test, decides the next version from the commits since the last `v*` tag
+   (`fix:` → patch, `feat:` → minor, `feat!:` or `BREAKING CHANGE` → major; `chore:`, `docs:`, `ci:`, `build:` etc. do not release),
+   pushes the tag, publishes to npm with OIDC trusted publishing (no npm token), and creates the GitHub Release.
 
-### Release Steps
-
-1. **Commit and push changes:**
-```bash
-git add .
-git commit -m "feat: add new feature"  # Use conventional commit format
-git push origin main
-```
-
-2. **Build the library:**
-```bash
-npm run build
-```
-
-3. **Update version and create release:**
-```bash
-npm version patch  # or minor, major
-```
-This command automatically:
-- Updates version in `package.json`
-- Creates Git tag
-- Pushes tag to remote repository
-- Creates GitHub release
-- Updates `CHANGELOG.md`
-
-4. **Verify release artifacts:**
-```bash
-# Check if tag was created
-git tag -l | tail -3
-
-# Check if CHANGELOG was updated
-git log --oneline -2
-```
-
-5. **Publish to npm:**
-```bash
-npm publish
-```
-
-### Version Management
-
-- **patch**: Bug fixes and minor updates (1.2.1 → 1.2.2)
-- **minor**: New features (1.2.1 → 1.3.0)
-- **major**: Breaking changes (1.2.1 → 2.0.0)
-
-### Automated Processes
-
-The release process uses several npm scripts that run automatically:
-
-- **`postversion`**: Automatically executes after `npm version`
-- **`push:tag`**: Pushes Git tag to remote repository
-- **`create:release`**: Creates GitHub release with conventional changelog
-- **`create:changelog`**: Updates local `CHANGELOG.md` file
-
-### Troubleshooting
-
-If the automated release process fails:
-
-```bash
-# Manually execute release scripts
-npm run push:tag
-npm run create:release
-npm run create:changelog
-```
-
-Check GitHub repository settings and ensure proper authentication tokens are configured.
+Do not run `npm version` or `npm publish` by hand, and do not bump `version` in `package.json` (the published version comes from the tag).
 
 ## Architecture
 

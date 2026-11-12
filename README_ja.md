@@ -128,7 +128,7 @@ new LambdaEdgeController(
 1. **依存関係のインストール:**
 ```bash
 # プロジェクト依存関係のインストール
-npm install
+pnpm install
 
 # 例の依存関係のインストール
 cd examples
@@ -138,7 +138,7 @@ npm install
 2. **ライブラリのビルド:**
 ```bash
 # プロジェクトルートから
-npm run build
+pnpm run build
 ```
 
 3. **環境設定:**
@@ -166,13 +166,13 @@ DEBUG=true
 #### ユニットテスト
 ```bash
 # すべてのユニットテストを実行
-npm test
+pnpm test
 
 # ウォッチモードでテストを実行
-npm run test:watch
+pnpm run test:watch
 
 # カバレッジ付きでテストを実行
-npm run test:dev
+pnpm run test:dev
 ```
 
 #### 統合テスト
@@ -209,7 +209,8 @@ examplesディレクトリは以下を提供します：
 
 ### 前提条件
 
-- Node.js >= 14.0.0
+- Node.js >= 18.18.0（pnpm 10 は 18.12 以上、固定している `@typescript-eslint/parser` 7.x は `^18.18.0 || >=20` が必要）
+- [pnpm](https://pnpm.io/)（バージョンは `package.json` の `packageManager` で固定。`corepack enable` で使われる）
 - CloudFront権限を持つAWS認証情報
 - TypeScriptの知識
 
@@ -217,21 +218,24 @@ examplesディレクトリは以下を提供します：
 
 ```bash
 # 依存関係のインストール
-npm install
+pnpm install
 
 # リンターの実行
-npm run lint
-npm run lint --fix
+pnpm run lint
+pnpm run lint --fix
+
+# 型チェック
+pnpm run typecheck
 
 # テストの実行
-npm test
-npm run test:watch
+pnpm test
+pnpm run test:watch
 
 # ビルド
-npm run build
+pnpm run build
 
 # ドキュメントの生成
-npm run doc
+pnpm run doc
 ```
 
 ### 必要なIAM権限
@@ -251,6 +255,18 @@ npm run doc
   ]
 }
 ```
+
+## リリース
+
+リリースは自動です。`main` へのマージで、CircleCI が [semantic-release](https://github.com/semantic-release/semantic-release) を実行します
+（config: `hideokamoto/circleci-configurations` の `workflows/publish/npm-polyrepo-semantic-release.yaml`、設定: `.releaserc.json`）。
+
+1. [Conventional Commits](https://www.conventionalcommits.org/) に沿ったコミットの PR をマージする。
+2. CircleCI が lint / typecheck / build / test を実行し、前回の `v*` タグ以降のコミットから次の版を決め
+   （`fix:` → patch、`feat:` → minor、`feat!:` または `BREAKING CHANGE` → major。`chore:`・`docs:`・`ci:`・`build:` などはリリースしない）、
+   タグの push、OIDC（npm トークン不要）での npm 公開、GitHub Release の作成まで行う。
+
+`npm version` や `npm publish` を手で実行しないこと。`package.json` の `version` も手で上げない（公開される版はタグで決まる）。
 
 ## アーキテクチャ
 
