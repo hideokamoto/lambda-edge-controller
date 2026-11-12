@@ -209,7 +209,7 @@ examplesディレクトリは以下を提供します：
 
 ### 前提条件
 
-- Node.js >= 18.0.0
+- Node.js >= 18.18.0（pnpm 10 は 18.12 以上、固定している `@typescript-eslint/parser` 7.x は `^18.18.0 || >=20` が必要）
 - [pnpm](https://pnpm.io/)（バージョンは `package.json` の `packageManager` で固定。`corepack enable` で使われる）
 - CloudFront権限を持つAWS認証情報
 - TypeScriptの知識

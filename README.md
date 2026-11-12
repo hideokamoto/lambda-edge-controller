@@ -209,7 +209,7 @@ The examples directory provides:
 
 ### Prerequisites
 
-- Node.js >= 18.0.0
+- Node.js >= 18.18.0 (pnpm 10 needs 18.12+, and the pinned `@typescript-eslint/parser` 7.x needs `^18.18.0 || >=20`)
 - [pnpm](https://pnpm.io/) (the version is pinned by `packageManager` in `package.json`; `corepack enable` picks it up)
 - AWS credentials with CloudFront permissions
 - TypeScript knowledge
