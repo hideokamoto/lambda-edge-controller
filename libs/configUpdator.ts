@@ -130,6 +130,10 @@ export class ConfigUpdator {
   /**
    * update distribution config to attach edge function
    *
+   * CloudFront allows only one function per event type in a cache behavior,
+   * so any function (or function version) already associated with the target
+   * event type of the default cache behavior is replaced.
+   *
    * @param {CloudFront.Types.DistributionConfig} config - CloudFront distribution config
    * @return {CloudFront.Types.DistributionConfig} updated distribution config
    **/
@@ -142,11 +146,11 @@ export class ConfigUpdator {
       LambdaFunctionARN: this.getLambdaArn(),
       EventType: this.eventType
     }
-    if (!lambdas.Items) {
-      lambdas.Items = [newItem]
-    } else {
-      lambdas.Items.push(newItem)
-    }
+    const newLambdaItems: LambdaFunctionAssociation[] = (lambdas.Items || []).filter(
+      (item: LambdaFunctionAssociation) => item.EventType !== this.eventType
+    )
+    newLambdaItems.push(newItem)
+    lambdas.Items = newLambdaItems
     lambdas.Quantity = lambdas.Items.length
     defaultCacheBehavior.LambdaFunctionAssociations = lambdas
     return param
