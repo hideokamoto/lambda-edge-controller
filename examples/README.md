@@ -9,8 +9,8 @@ Lambda@Edge Controllerの全機能をテストする統合スクリプトです�
 
 **実行方法:**
 ```bash
-# ライブラリをビルド
-npm run build
+# ライブラリをビルド（プロジェクトルートで）
+pnpm run build
 
 # スクリプトを実行
 node examples/aws-test.js
@@ -29,9 +29,7 @@ cd examples && npm test
 ### 1. 依存関係のインストール
 ```bash
 # プロジェクトルートで
-npm install
-# または
-yarn install
+pnpm install
 
 # examplesディレクトリで
 cd examples
@@ -41,9 +39,7 @@ npm install
 ### 2. ライブラリのビルド
 ```bash
 # プロジェクトルートで
-npm run build
-# または
-yarn build
+pnpm run build
 ```
 
 ### 3. 環境設定ファイルの作成

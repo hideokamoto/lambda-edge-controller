@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, main ]
 
 jobs:
   build:
@@ -16,17 +16,22 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        # package.json "engines" is >=18.0.0, and the dependencies (AWS SDK v3, rollup 4,
+        # husky 9, commitlint 19, lint-staged 15) need Node 18 or later. pnpm 10 needs >=18.12.
+        node-version: [18.x, 20.x, 22.x, 24.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - run: yarn
-    - run: yarn run lint
-    - run: yarn run test -- --ci
-    - run: yarn run build
+        cache: 'pnpm'
+    - run: pnpm install --frozen-lockfile
+    - run: pnpm run lint
+    - run: pnpm run typecheck
+    - run: pnpm run test --ci
+    - run: pnpm run build
