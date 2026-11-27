@@ -4,6 +4,7 @@
   "description": "Simple Lambda@edge function controller",
   "type": "module",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -18,6 +19,7 @@
     "test:dev": "jest --watch --silent=false --verbose false --coverage"
   },
   "keywords": [],
+  "homepage": "https://github.com/hideokamoto/lambda-edge-controller#readme",
   "bugs": {
     "url": "https://github.com/hideokamoto/lambda-edge-controller/issues"
   },
@@ -33,6 +35,9 @@
     "extensionsToTreatAsEsm": [
       ".ts"
     ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
     "transform": {
       "^.+\\.(ts|tsx)$": [
         "ts-jest",

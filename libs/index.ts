@@ -1,3 +1,3 @@
-export * from './configUpdator'
-export * from './controller'
-export * from './models'
+export * from './configUpdator.js'
+export * from './controller.js'
+export * from './models.js'

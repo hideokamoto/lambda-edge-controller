@@ -1,9 +1,9 @@
 import 'tslib'
 import bunyan from 'bunyan'
 import { CloudFrontClient, GetDistributionCommand, UpdateDistributionCommand, UpdateDistributionCommandOutput } from '@aws-sdk/client-cloudfront'
-import ConfigUpdator from './configUpdator'
-import { ControllerClient, EventType } from './models'
-import { getLogger } from './logger'
+import ConfigUpdator from './configUpdator.js'
+import { ControllerClient, EventType } from './models.js'
+import { getLogger } from './logger.js'
 
 export class LambdaEdgeController {
   // CloudFront client from AWS SDK

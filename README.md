@@ -108,10 +108,12 @@ new LambdaEdgeController(
 ### Methods
 
 #### `attachEdgeFunction(distributionId: string): Promise<any>`
-Attaches the Lambda@Edge function to the specified CloudFront distribution.
+Attaches the Lambda@Edge function to the default cache behavior of the specified CloudFront distribution.
+
+CloudFront allows only one function per event type in a cache behavior. If a function is already associated with the same event type (another version of the same function, or a different function), it is replaced by the function given to the constructor. Associations for other event types and the other cache behaviors are left unchanged.
 
 #### `detachEdgeFunction(distributionId: string): Promise<any>`
-Removes the Lambda@Edge function from the specified CloudFront distribution.
+Removes the Lambda@Edge function from the default cache behavior of the specified CloudFront distribution. Only the association for the constructor's event type whose ARN (including the version) exactly matches the ARN given to the constructor is removed.
 
 #### `enableDebugger(): this`
 Enables detailed logging for debugging purposes.
