@@ -9,6 +9,7 @@ export default {
   }],
   plugins: [
     typescript({
+      include: ['*.ts', '**/*.ts'],
       tsconfigOverride: {
         compilerOptions: {
           module: 'ESNext',
