@@ -1,5 +1,5 @@
 import { GetDistributionResult, UpdateDistributionRequest, DistributionConfig, LambdaFunctionAssociations, LambdaFunctionAssociation } from '@aws-sdk/client-cloudfront'
-import { EventType } from './models'
+import { EventType } from './models.js'
 
 export class ConfigUpdator {
   // Lambda function ARN

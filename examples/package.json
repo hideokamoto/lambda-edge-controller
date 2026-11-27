@@ -1,6 +1,7 @@
 {
   "name": "lambda-edge-controller-examples",
   "version": "1.0.0",
+  "private": true,
   "description": "Lambda@Edge Controller の使用例とテストスクリプト",
   "main": "aws-test.js",
   "scripts": {
