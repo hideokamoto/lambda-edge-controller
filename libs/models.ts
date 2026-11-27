@@ -1,6 +1,6 @@
 import 'tslib'
 import { CloudFrontClient } from '@aws-sdk/client-cloudfront'
-import ConfigUpdator from './configUpdator'
+import ConfigUpdator from './configUpdator.js'
 
 // Service Client configs
 export interface ControllerClient {
